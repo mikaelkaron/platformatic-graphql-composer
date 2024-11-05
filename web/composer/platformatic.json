@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.platformatic.dev/@platformatic/composer/2.8.1.json",
+  "composer": {
+    "graphql": {
+      "graphiql": true,
+      "defaultArgsAdapter": "where.id.in.$>#id"
+    },
+    "services": [
+      {
+        "id": "auth",
+        "openapi": {
+          "url": "/documentation/json",
+          "prefix": "/auth"
+        },
+        "graphql": {
+          "name": "auth",
+          "entities": {
+            "Account": {
+              "resolver": {
+                "name": "accounts"
+              },
+              "pkey": "id"
+            }
+          }
+        }
+      },
+      {
+        "id": "library",
+        "openapi": {
+          "url": "/documentation/json",
+          "prefix": "/library"
+        },
+        "graphql": {
+          "name": "library",
+          "entities": {
+            "Book": {
+              "resolver": {
+                "name": "books"
+              },
+              "pkey": "id",
+              "fkeys": [
+                {
+                  "type": "Account",
+                  "subgraph": "auth",
+                  "field": "ownerId",
+                  "resolver": {
+                    "name": "accounts",
+                    "partialResults": "$>#id"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "refreshTimeout": 1000
+  },
+  "watch": true
+}

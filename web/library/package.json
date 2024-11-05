@@ -1,0 +1,17 @@
+{
+  "name": "library",
+  "scripts": {
+    "clean": "rm -fr ./dist",
+    "migrate": "plt-db migrations apply",
+    "seed": "plt-db seed seed.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@platformatic/db": "^2.8.1"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=20.6.0"
+  }
+}

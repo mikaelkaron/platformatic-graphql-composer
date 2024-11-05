@@ -1,0 +1,15 @@
+{
+  "name": "composer",
+  "scripts": {
+    "clean": "rm -fr ./dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@platformatic/composer": "^2.8.1"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=20.6.0"
+  }
+}
