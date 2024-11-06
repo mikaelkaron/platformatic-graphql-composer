@@ -1,4 +1,4 @@
-import { suite, test, after } from 'node:test'
+import { suite, test, after, todo } from 'node:test'
 import { deepEqual } from 'node:assert/strict'
 import { buildServer } from '@platformatic/runtime'
 import runtimeConfig from '../platformatic.json'
@@ -127,6 +127,21 @@ suite('runtime graphql tests', async s => {
 
     for (const request of requests) {
       const response = await graphqlFetch(`${runtimeUrl}/graphql`, request.query, request.variables)
+      deepEqual(response, request.expected)
+    }
+  })
+
+  todo('should use nested queries on multiple platformatic db services', async () => {
+    const requests = [
+      // nested many times
+      {
+        query: `{ artists (where: { firstName: { eq: "Luciano" } }) { firstName, songs { singer { firstName, songs { title } } } } }`,
+        expected: { artists: [ { "firstName": "Luciano", "songs": [ { "singer": { "firstName": "Luciano", "songs": [ { "title": "Nessun dorma" } ] } } ] } ] }
+      },
+    ]
+
+    for (const request of requests) {
+      const response = await graphqlFetch(`${runtimeUrl}/graphql`, request.query)
       deepEqual(response, request.expected)
     }
   })
