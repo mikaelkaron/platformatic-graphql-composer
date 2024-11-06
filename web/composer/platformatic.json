@@ -46,6 +46,13 @@
                   }
                 }
               ]
+            },
+            "Artist": {
+              "pkey": "id",
+              "resolver": {
+                "name": "getArtistsByMovies",
+                "argsAdapter": "ids.$>#id"
+              }
             }
           }
         }
@@ -74,12 +81,22 @@
                   }
                 }
               ]
+            },
+            "Artist": {
+              "pkey": "id",
+              "resolver": {
+                "name": "getArtistsBySongs",
+                "argsAdapter": "ids.$>#id"
+              }
             }
           }
         }
       }
     ],
     "refreshTimeout": 1000
+  },
+  "server": {
+    "disableRequestLogging": true
   },
   "watch": true
 }

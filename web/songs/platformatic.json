@@ -5,6 +5,9 @@
     "graphql": true,
     "openapi": true
   },
+  "server": {
+    "disableRequestLogging": true
+  },
   "watch": {
     "ignore": [
       "*.sqlite",
@@ -14,6 +17,15 @@
   "migrations": {
     "dir": "migrations",
     "autoApply": "{PLT_SONGS_APPLY_MIGRATIONS}"
+  },
+  "plugins": {
+    "paths": [
+      {
+        "path": "./plugins",
+        "encapsulate": false
+      }
+    ],
+    "typescript": "{PLT_SONGS_TYPESCRIPT}"
   },
   "types": {
     "autogenerate": true

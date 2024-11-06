@@ -5,6 +5,9 @@
     "graphql": true,
     "openapi": true
   },
+  "server": {
+    "disableRequestLogging": true
+  },
   "watch": {
     "ignore": [
       "*.sqlite",
