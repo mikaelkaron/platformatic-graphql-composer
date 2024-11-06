@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS movies (
+  id VARCHAR NOT NULL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  director_id VARCHAR,
+  year INT
+);

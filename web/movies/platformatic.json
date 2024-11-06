@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.platformatic.dev/@platformatic/db/2.9.0.json",
+  "db": {
+    "connectionString": "{PLT_MOVIES_DATABASE_URL}",
+    "graphql": true,
+    "openapi": true
+  },
+  "watch": {
+    "ignore": [
+      "*.sqlite",
+      "*.sqlite-journal"
+    ]
+  },
+  "migrations": {
+    "dir": "migrations",
+    "autoApply": "{PLT_MOVIES_APPLY_MIGRATIONS}"
+  },
+  "types": {
+    "autogenerate": true
+  }
+}

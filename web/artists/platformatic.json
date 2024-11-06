@@ -1,7 +1,7 @@
 {
-  "$schema": "https://schemas.platformatic.dev/@platformatic/db/2.8.1.json",
+  "$schema": "https://schemas.platformatic.dev/@platformatic/db/2.9.0.json",
   "db": {
-    "connectionString": "{PLT_AUTH_DATABASE_URL}",
+    "connectionString": "{PLT_ARTISTS_DATABASE_URL}",
     "graphql": true,
     "openapi": true
   },
@@ -13,7 +13,7 @@
   },
   "migrations": {
     "dir": "migrations",
-    "autoApply": "{PLT_AUTH_APPLY_MIGRATIONS}"
+    "autoApply": "{PLT_ARTISTS_APPLY_MIGRATIONS}"
   },
   "types": {
     "autogenerate": true

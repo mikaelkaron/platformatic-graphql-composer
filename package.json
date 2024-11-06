@@ -10,7 +10,7 @@
     "seed": "npm run seed --workspaces --if-present --"
   },
   "dependencies": {
-    "wattpm": "^2.8.1"
+    "wattpm": "^2.9.0"
   },
   "workspaces": [
     "web/*"

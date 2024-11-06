@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schemas.platformatic.dev/@platformatic/composer/2.8.1.json",
+  "$schema": "https://schemas.platformatic.dev/@platformatic/composer/2.9.0.json",
   "composer": {
     "graphql": {
       "graphiql": true,
@@ -7,45 +7,70 @@
     },
     "services": [
       {
-        "id": "auth",
+        "id": "artists",
         "openapi": {
           "url": "/documentation/json",
-          "prefix": "/auth"
+          "prefix": "/artists"
         },
         "graphql": {
-          "name": "auth",
+          "name": "artists",
           "entities": {
-            "Account": {
-              "resolver": {
-                "name": "accounts"
-              },
+            "Artist": {
+              "resolver": { "name": "artist" },
               "pkey": "id"
             }
           }
         }
       },
       {
-        "id": "library",
+        "id": "movies",
         "openapi": {
           "url": "/documentation/json",
-          "prefix": "/library"
+          "prefix": "/movies"
         },
         "graphql": {
-          "name": "library",
+          "name": "movies",
           "entities": {
-            "Book": {
-              "resolver": {
-                "name": "books"
-              },
+            "Movie": {
+              "resolver": { "name": "movies" },
               "pkey": "id",
               "fkeys": [
                 {
-                  "type": "Account",
-                  "subgraph": "auth",
-                  "field": "ownerId",
+                  "type": "Artist",
+                  "field": "directorId",
+                  "subgraph": "artists",
+                  "pkey": "id",
                   "resolver": {
-                    "name": "accounts",
-                    "partialResults": "$>#id"
+                    "name": "artists",
+                    "partialResults": "$>id.#directorId"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "songs",
+        "openapi": {
+          "url": "/documentation/json",
+          "prefix": "/songs"
+        },
+        "graphql": {
+          "name": "songs",
+          "entities": {
+            "Song": {
+              "resolver": { "name": "song" },
+              "pkey": "id",
+              "fkeys": [
+                {
+                  "type": "Artist",
+                  "field": "singerId",
+                  "pkey": "id",
+                  "subgraph": "artists",
+                  "resolver": {
+                    "name": "artists",
+                    "partialResults": "$>id.#singerId"
                   }
                 }
               ]
