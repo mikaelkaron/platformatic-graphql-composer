@@ -1,5 +1,7 @@
 import type { FastifyPluginAsync } from "fastify";
 
+const QUERY_RESULT_LIMIT = 100
+
 const plugin: FastifyPluginAsync = async (app) => {
   app.graphql.extendSchema(`
     type Artist {
@@ -26,7 +28,8 @@ const plugin: FastifyPluginAsync = async (app) => {
     Artist: {
       movies: async (parent) => {
         const movies = await app.platformatic.entities.movie.find({
-          where: { directorId: { eq: parent.id } }
+          where: { directorId: { eq: parent.id } },
+          limit: QUERY_RESULT_LIMIT
         })
         return movies ?? []
       }
@@ -36,11 +39,10 @@ const plugin: FastifyPluginAsync = async (app) => {
         return ids.map((id: any) => ({ id }))
       },
       getMoviesByArtists: async (parent, args, context, info) => {
-        const movies = await app.platformatic.entities.movie.find({
-          where: { directorId: { in: args.ids } }
+        return await app.platformatic.entities.movie.find({
+          where: { directorId: { in: args.ids } },
+          limit: QUERY_RESULT_LIMIT
         })
-
-        return movies.map(s => ({ ...s, directorId: s.directorId }))
       }
     }
   })
