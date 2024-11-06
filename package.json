@@ -2,6 +2,7 @@
   "name": "src",
   "private": true,
   "scripts": {
+    "test": "borp",
     "start": "plt-runtime start",
     "clean": "npm run clean --workspaces --if-present --",
     "migrate": "npm run migrate --workspaces --if-present --",
@@ -12,5 +13,8 @@
   },
   "workspaces": [
     "web/*"
-  ]
+  ],
+  "devDependencies": {
+    "borp": "^0.18.0"
+  }
 }
