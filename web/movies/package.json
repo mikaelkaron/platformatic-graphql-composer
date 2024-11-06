@@ -10,7 +10,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@platformatic/db": "^2.9.0"
+    "@platformatic/db": "^2.9.1"
   },
   "engines": {
     "node": "^18.8.0 || >=20.6.0"
