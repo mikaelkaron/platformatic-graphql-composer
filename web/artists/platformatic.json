@@ -6,6 +6,8 @@
     "openapi": true
   },
   "server": {
+    "hostname": "127.0.0.1",
+    "port": 3001,
     "disableRequestLogging": true
   },
   "watch": {
@@ -15,7 +17,7 @@
     ]
   },
   "migrations": {
-    "dir": "migrations",
+    "dir": "./migrations",
     "autoApply": "{PLT_ARTISTS_APPLY_MIGRATIONS}"
   },
   "types": {

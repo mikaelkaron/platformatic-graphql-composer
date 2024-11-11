@@ -1,7 +1,7 @@
 import { suite, test, after } from 'node:test'
 import { deepEqual } from 'node:assert/strict'
-import { buildServer } from '@platformatic/runtime'
-import runtimeConfig from '../platformatic.json'
+import { buildServer } from '@platformatic/db'
+import dbConfig from '../platformatic.json'
 
 const graphqlFetch = <T extends object = object>(input: string, query: string, variables?: object) => fetch(input, {
   method: 'POST',
@@ -13,8 +13,8 @@ const graphqlFetch = <T extends object = object>(input: string, query: string, v
   .then(result => result.json() as Promise<{ data: T }>)
   .then(({ data }) => data)
 
-suite('runtime graphql tests', async s => {
-  const server: any = await buildServer(runtimeConfig)
+suite('artists graphql tests', async s => {
+  const server: any = await buildServer(dbConfig)
   const url = await server.start()
 
   after(async () => await server.close())
@@ -53,6 +53,7 @@ suite('runtime graphql tests', async s => {
         },
       }
     ]
+
 
     for (const request of requests) {
       const response = await graphqlFetch(`${url}/graphql`, request.query)

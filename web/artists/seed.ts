@@ -9,8 +9,16 @@ const artists: object[] = [
   { id: '102', first_name: 'Roberto', last_name: 'Benigni', profession: 'Director' }
 ]
 
+const tags: object[] = [
+  { id: '1', artist_id: '101', tag: 'visual'},
+  { id: '2', artist_id: '102', tag: 'visual'}
+]
+
 export async function seed (opts: { entities: Entities }) {
   for (const input of artists) {
     await opts.entities.artist.save({ input })
+  }
+  for (const input of tags) {
+    await opts.entities.tag.save({ input })
   }
 }

@@ -2,7 +2,7 @@
   "name": "src",
   "private": true,
   "scripts": {
-    "test": "borp",
+    "test": "borp test/**.test.ts",
     "start": "plt-runtime start",
     "clean": "npm run clean --workspaces --if-present --",
     "migrate": "npm run migrate --workspaces --if-present --",

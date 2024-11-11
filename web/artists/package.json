@@ -1,11 +1,14 @@
 {
   "name": "artists",
   "scripts": {
+    "test": "borp",
+    "start": "plt-db start",
     "clean": "rm -fr ./dist",
     "migrate": "plt-db migrations apply",
     "seed": "plt-db seed seed.ts"
   },
   "devDependencies": {
+    "borp": "^0.18.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {

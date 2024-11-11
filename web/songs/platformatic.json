@@ -6,6 +6,8 @@
     "openapi": true
   },
   "server": {
+    "hostname": "127.0.0.1",
+    "port": 3003,
     "disableRequestLogging": true
   },
   "watch": {
@@ -15,7 +17,7 @@
     ]
   },
   "migrations": {
-    "dir": "migrations",
+    "dir": "./migrations",
     "autoApply": "{PLT_SONGS_APPLY_MIGRATIONS}"
   },
   "plugins": {

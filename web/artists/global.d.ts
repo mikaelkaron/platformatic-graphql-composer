@@ -1,9 +1,9 @@
 import type { PlatformaticApp, PlatformaticDBMixin, PlatformaticDBConfig, Entity, Entities, EntityHooks } from '@platformatic/db'
-import { EntityTypes, Artist } from './types'
+import { EntityTypes, Artist,Tag } from './types'
 
 declare module 'fastify' {
   interface FastifyInstance {
-    getSchema<T extends 'Artist'>(schemaId: T): {
+    getSchema<T extends 'Artist' | 'Tag'>(schemaId: T): {
       '$id': string,
       title: string,
       description: string,
@@ -18,10 +18,12 @@ declare module 'fastify' {
 
 interface AppEntities extends Entities {
   artist: Entity<Artist>,
+    tag: Entity<Tag>,
 }
 
 interface AppEntityHooks {
   addEntityHooks(entityName: 'artist', hooks: EntityHooks<Artist>): any
+    addEntityHooks(entityName: 'tag', hooks: EntityHooks<Tag>): any
 }
 
 declare module 'fastify' {
